@@ -5,3 +5,6 @@ custom/
 cache/
 log/
 *.swp
+
+#add DS_Store OS X files to gitignore
+*.DS_Store
