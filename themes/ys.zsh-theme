@@ -35,19 +35,6 @@ ys_hg_prompt_info() {
 	fi
 }
 
-# Docker info
-local dock_info='$(ys_dock_prompt_info)'
-ys_dock_prompt_info() {
-    if [[ $DOCKER_MACHINE_NAME != "" ]]
-    then
-      DOCKER_MACHINE_NAME_LOCAL="%{$fg_bold[green]%}("$DOCKER_MACHINE_NAME")%{$reset_color%}"
-     else
-     	DOCKER_MACHINE_NAME_LOCAL="%{$fg[red]%}x"
-    fi
-
-    echo -n " %{$fg[white]%}with%{$reset_color%} docker:"$DOCKER_MACHINE_NAME_LOCAL
-}
-
 local exit_code="%(?,,C:%{$fg[red]%}%?%{$reset_color%})"
 
 # Prompt format:
@@ -68,7 +55,6 @@ PROMPT="
 %{$terminfo[bold]$fg[yellow]%}%~%{$reset_color%}\
 ${hg_info}\
 ${git_info}\
-${dock_info}\
  \
 %{$fg[white]%}[%*] $exit_code
 %{$terminfo[bold]$fg[red]%}$ %{$reset_color%}"
